@@ -35,9 +35,9 @@ export default function AuthPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full mb-4">
             <Heart className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">DatingFinder</h1>
-          <p className="text-gray-600">
-            {isLogin ? 'Welcome back!' : 'Find your perfect match'}
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">WorkFinder</h1>
+          <p className="text-gray-600 mb-8">
+            {isLogin ? 'Welcome back!' : 'Find your perfect job'}
           </p>
         </div>
 

@@ -2,22 +2,23 @@
 
 import React, { createContext, useContext, useReducer } from 'react';
 import type { ReactNode } from 'react';
-import type { AppState, User, Match, Message, AuthUser, SwipeAction } from '../types';
+import type { AppState, Job, Application, Message, AuthUser, SwipeAction } from '../types';
 
 type AppAction =
   | { type: 'SET_LOADING'; payload: boolean }
   | { type: 'SET_ERROR'; payload: string | null }
   | { type: 'SET_CURRENT_USER'; payload: AuthUser | null }
-  | { type: 'SET_USERS'; payload: User[] }
-  | { type: 'ADD_MATCH'; payload: Match }
+  | { type: 'SET_JOBS'; payload: Job[] }
+  | { type: 'ADD_APPLICATION'; payload: Application }
   | { type: 'ADD_MESSAGE'; payload: Message }
-  | { type: 'SWIPE_USER'; payload: SwipeAction };
+  | { type: 'SWIPE_JOB'; payload: SwipeAction };
 
 const initialState: AppState = {
   currentUser: null,
-  users: [],
-  matches: [],
+  jobs: [],
+  applications: [],
   messages: [],
+  swipedJobs: [],
   loading: false,
   error: null,
 };
@@ -30,16 +31,16 @@ function appReducer(state: AppState, action: AppAction): AppState {
       return { ...state, error: action.payload };
     case 'SET_CURRENT_USER':
       return { ...state, currentUser: action.payload };
-    case 'SET_USERS':
-      return { ...state, users: action.payload };
-    case 'ADD_MATCH':
-      return { ...state, matches: [...state.matches, action.payload] };
+    case 'SET_JOBS':
+      return { ...state, jobs: action.payload };
+    case 'ADD_APPLICATION':
+      return { ...state, applications: [...state.applications, action.payload] };
     case 'ADD_MESSAGE':
       return { ...state, messages: [...state.messages, action.payload] };
-    case 'SWIPE_USER':
+    case 'SWIPE_JOB':
       return {
         ...state,
-        users: state.users.filter(user => user.id !== action.payload.targetUserId)
+        swipedJobs: [...state.swipedJobs, action.payload.jobId]
       };
     default:
       return state;

@@ -1,27 +1,48 @@
-export interface User {
+export interface Company {
   id: string;
   name: string;
-  age: number;
-  bio: string;
-  photos: string[];
+  logo: string;
+  description: string;
+  industry: string;
+  size: string;
   location: string;
-  interests: string[];
-  gender: 'male' | 'female' | 'other';
-  lookingFor: 'male' | 'female' | 'other' | 'all';
+  website?: string;
   verified: boolean;
-  lastActive: Date;
 }
 
-export interface Match {
+export interface Job {
   id: string;
-  users: [string, string]; // user IDs
-  matchedAt: Date;
-  lastMessage?: Message;
+  title: string;
+  company: Company;
+  description: string;
+  requirements: string[];
+  benefits: string[];
+  salary: {
+    min: number;
+    max: number;
+    currency: string;
+  };
+  location: string;
+  type: 'full-time' | 'part-time' | 'contract' | 'internship';
+  level: 'entry' | 'mid' | 'senior' | 'executive';
+  remote: boolean;
+  postedAt: Date;
+  expiresAt: Date;
+  skills: string[];
+}
+
+export interface Application {
+  id: string;
+  jobId: string;
+  userId: string;
+  appliedAt: Date;
+  status: 'pending' | 'reviewed' | 'interview' | 'rejected' | 'accepted';
+  coverLetter?: string;
 }
 
 export interface Message {
   id: string;
-  matchId: string;
+  applicationId: string;
   senderId: string;
   content: string;
   timestamp: Date;
@@ -30,8 +51,8 @@ export interface Message {
 
 export interface SwipeAction {
   userId: string;
-  targetUserId: string;
-  action: 'like' | 'pass';
+  jobId: string;
+  action: 'interested' | 'not-interested';
   timestamp: Date;
 }
 
@@ -44,9 +65,10 @@ export interface AuthUser {
 
 export interface AppState {
   currentUser: AuthUser | null;
-  users: User[];
-  matches: Match[];
+  jobs: Job[];
+  applications: Application[];
   messages: Message[];
+  swipedJobs: string[]; // IDs of jobs that have been swiped
   loading: boolean;
   error: string | null;
 }

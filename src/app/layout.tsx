@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AppProvider } from "@/context/AppContext";
+import Navigation from "@/components/Navigation";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -9,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "DatingFinder - Find Your Perfect Match",
-  description: "Discover meaningful connections with DatingFinder. Swipe, match, and chat with people near you.",
+  title: "WorkFinder - Find Your Perfect Job",
+  description: "Discover amazing career opportunities with WorkFinder. Swipe through jobs, apply, and connect with employers.",
 };
 
 export default function RootLayout({
@@ -22,7 +23,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
         <AppProvider>
-          {children}
+          <div className="pb-20">
+            {children}
+          </div>
+          <Navigation />
         </AppProvider>
       </body>
     </html>

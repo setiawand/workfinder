@@ -1,0 +1,30 @@
+services:
+  datingfinder-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: datingfinder-nextjs
+    ports:
+      - "4000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    restart: unless-stopped
+    networks:
+      - datingfinder-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  datingfinder-network:
+    driver: bridge
+
+volumes:
+  # Add volumes here if needed for persistent data
+  app-data:
+    driver: local
