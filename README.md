@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WorkFinder
+
+A modern job discovery application built with Next.js. WorkFinder helps users discover and apply for jobs through an intuitive swipe-based interface.
+
+## Features
+
+- **Job Discovery**: Swipe through job listings with detailed information
+- **Applications Tracking**: Keep track of your job applications
+- **Profile Management**: Manage your professional profile
+- **Real-time Chat**: Communicate with potential employers
+- **Responsive Design**: Works seamlessly on desktop and mobile
 
 ## Getting Started
 
@@ -16,18 +26,21 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: React Context
+- **Icons**: Lucide React
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `/src/app` - Next.js app router pages
+- `/src/components` - Reusable React components
+- `/src/context` - Application state management
+- `/src/types` - TypeScript type definitions
+- `/src/utils` - Utility functions and mock data
 
 ## Deploy on Vercel
 
